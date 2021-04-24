@@ -8,8 +8,8 @@
 const char* ssid = "<SSID>";
 const char* password = "<PASSWORD>";
 
-WiFiClientSecure wifiClient = WiFiClientSecure();
-MQTTClient mqttClient = MQTTClient();
+WiFiClientSecure wifiClient;
+MQTTClient mqttClient;
 
 void setup() {
   Serial.begin(115200);
@@ -22,7 +22,6 @@ void loop() {
 }
 
 void connectAWS() {
-
   // Configure WiFiClientSecure to use AWS certificates
   wifiClient.setCACert(AWS_CERT_CA);
   wifiClient.setCertificate(AWS_CERT_CRT);
@@ -36,11 +35,6 @@ void connectAWS() {
   while (!mqttClient.connect(AWS_IOT_THING_NAME)) {
     Serial.print(".");
     delay(250);
-  }
-
-  if (!mqttClient.connected()) {
-    Serial.println("AWS IoT Timeout!");
-    return;
   }
 
   Serial.println("AWS IoT Connected!");
