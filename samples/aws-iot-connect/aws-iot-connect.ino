@@ -1,4 +1,3 @@
-#include <WiFi.h>
 #include <WiFiClientSecure.h>
 #include <MQTTClient.h>
 #include "secrets.h"
