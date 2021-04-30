@@ -15,6 +15,7 @@ void loop() {
   // read the state of the pushbutton value:
   buttonState = digitalRead(BUTTON_PIN);
 
+  // Pull Down
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
